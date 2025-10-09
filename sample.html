@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carter | Senior Full-Stack Engineer</title>
+    <!-- Load Tailwind CSS Library -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ======================================================= -->
+    <!-- CSS STYLING (LOGICALLY SEPARATED) -->
+    <!-- ======================================================= -->
+    <style>
+        /* Custom Font and base styling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Light Gray Background */
+            color: #1a202c; /* Dark Text */
+            line-height: 1.6;
+        }
+        /* Style for content views (Pages) */
+        .page-view {
+            display: none; /* Pages are hidden by default, shown by JS */
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Styling for the currently selected navigation link */
+        /* For sidebar links, use background and text change */
+        .active-nav {
+            color: #0d9488; /* Teal-700 */
+            border-bottom: 3px solid #0d9488; /* Used for mobile header link */
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+        .sidebar-link.active-nav {
+            background-color: #e0f2f2; /* Teal-50 */
+            color: #0d9488;
+            font-weight: 600;
+            border-bottom: none; /* Remove header styling for sidebar links */
+        }
+        .sidebar-link:hover {
+            background-color: #f0fdfa; /* Light hover background */
+            color: #0d9488; /* Teal-600 */
+        }
+        /* Visual indicator for section headers */
+        .section-header {
+            border-left: 5px solid #0d9488;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ======================================================= -->
+    <!-- HTML STRUCTURE (MAIN CONTENT BODY) -->
+    <!-- ======================================================= -->
+
+    <!-- Header (MOBILE ONLY FALLBACK - Hidden on lg screens) -->
+    <header class="sticky top-0 z-20 border-b border-gray-200 bg-white/95 backdrop-blur-sm shadow-md lg:hidden">
+        <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 sm:mb-0">
+                <span class="text-3xl font-extrabold text-teal-600">
+                    <span role="img" aria-label="Logo">⚙️</span>
+                </span>
+                <h1 class="text-2xl font-bold text-gray-900 tracking-wider">
+                    Alex Carter
+                </h1>
+            </div>
+            <!-- Main Menu (Only Home link remains) -->
+            <nav class="space-x-4 flex overflow-x-auto pb-2 -mb-2 text-gray-600 text-sm md:text-base">
+                <a href="#home" class="nav-link hover:text-teal-600 transition whitespace-nowrap" data-page="home" onclick="showPage('home')">Home</a>
+                <span class="text-gray-400">|</span>
+                <span class="text-sm font-light text-gray-500">Navigation in Sidebar (Desktop)</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Left Sidebar (FIXED, FULL-HEIGHT, ACTS AS DESKTOP NAVIGATION FRAME) -->
+    <aside id="sidebar" class="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-1/4 lg:overflow-y-auto w-full p-6 bg-white shadow-2xl border-r border-gray-200 mb-8 lg:mb-0 z-30 hidden lg:block">
+        
+        <!-- Site Title and Logo (Top of Fixed Sidebar) -->
+        <div class="mb-8 pt-4 pb-4 border-b border-gray-200">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl font-extrabold text-teal-600">
+                    <span role="img" aria-label="Logo">⚙️</span>
+                </span>
+                <h1 class="text-3xl font-bold text-gray-900 tracking-wider cursor-pointer" onclick="showPage('home')">
+                    Alex Carter
+                </h1>
+            </div>
+            <h2 class="text-base text-teal-600 font-light mt-1 ml-9">Senior Full-Stack Engineer</h2>
+        </div>
+
+        <h3 class="text-xl font-bold text-teal-600 mb-4 pb-2 border-b">Site Navigation</h3>
+        <nav class="space-y-2 text-gray-700">
+            <!-- Detail Page Links (Primary Navigation) -->
+            <a href="#home" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('home')">🏠 Home (Overview)</a>
+            <a href="#education" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('education')">📚 Education History</a>
+            <a href="#experience" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('experience')">📈 Work Experience</a>
+            <a href="#skill" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('skill')">🛠️ Core Skills</a>
+            <a href="#certification" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('certification')">🏅 Certifications & Training</a>
+            <a href="#advocacy" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('advocacy')">🤝 Advocacy & Community</a>
+            <a href="#portfolio" class="sidebar-link block p-2 rounded-md hover:bg-teal-50 transition" onclick="showPage('portfolio')">🎨 Project Portfolio</a>
+        </nav>
+        
+        <!-- Connect Section -->
+        <div class="mt-8 pt-4 border-t border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Connect</h3>
+            <div class="space-y-1">
+                <a href="mailto:alex.carter@example.com" class="text-sm text-gray-600 hover:text-teal-600 block transition">Email: alex.carter@example.com</a>
+                <a href="https://linkedin.com/in/alexcarterdev" target="_blank" class="text-sm text-gray-600 hover:text-teal-600 block transition">LinkedIn Profile</a>
+                <a href="https://github.com/alexcarterdev" target="_blank" class="text-sm text-gray-600 hover:text-teal-600 block transition">GitHub Profile</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area Wrapper (OFFSET TO CLEAR THE FIXED SIDEBAR) -->
+    <div class="lg:ml-[25%] w-full"> 
+        <main class="container mx-auto px-4 py-12 md:py-16">
+            <div id="content-area" class="w-full">
+
+                <!-- 1. HOME VIEW (Menu, Hero, Bio, Logo) -->
+                <section id="home" class="page-view space-y-12">
+                    <!-- Hero Section -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12 p-8 rounded-lg bg-white shadow-xl border border-gray-200">
+                        <div class="w-40 h-40 md:w-56 md:h-56 flex-shrink-0">
+                            <!-- Placeholder Image -->
+                            <img src="https://placehold.co/250x250/0d9488/ffffff?text=Alex+Carter"
+                                 alt="Professional Headshot of Alex Carter"
+                                 class="w-full h-full rounded-full object-cover border-4 border-teal-500 shadow-lg"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/250x250/0d9488/ffffff?text=AC';"
+                            >
+                        </div>
+                        <div class="text-center md:text-left">
+                            <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                                Alex Carter
+                            </h2>
+                            <h3 class="text-2xl md:text-3xl font-light text-teal-600 mt-2 mb-6">
+                                Senior Full-Stack Software Engineer
+                            </h3>
+                            <!-- Bio-Note / Introduction -->
+                            <p class="text-gray-700 text-lg max-w-xl">
+                                I am a dedicated and results-oriented professional with **7+ years** of experience specializing in building **scalable cloud applications**. My expertise lies in modern **TypeScript, React, and serverless architectures**, focusing on clean code, high performance, and mentoring junior developers to foster high-performing teams.
+                            </p>
+                            <a href="mailto:alex.carter@example.com" class="mt-6 inline-block px-6 py-2 bg-teal-600 text-white font-semibold rounded-full hover:bg-teal-700 transition shadow-lg">
+                                Send Me a Message
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- a - Education -->
+                <section id="education" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">📚 Education History</h2>
+                    <div class="space-y-8">
+                        <div class="border-l-4 border-teal-300 pl-4">
+                            <h3 class="text-2xl font-semibold text-gray-800">Master of Science in Computer Science</h3>
+                            <p class="text-lg text-gray-600">**Stanford University** | Palo Alto, CA | Graduated: May 2018</p>
+                            <p class="text-gray-500 mt-2">Specialization in Distributed Systems and Cloud Computing.</p>
+                        </div>
+                        <div class="border-l-4 border-teal-300 pl-4">
+                            <h3 class="text-2xl font-semibold text-gray-800">Bachelor of Science in Software Engineering</h3>
+                            <p class="text-lg text-gray-600">**Purdue University** | West Lafayette, IN | Graduated: May 2016</p>
+                            <p class="text-gray-500 mt-2">Graduated Summa Cum Laude. Relevant Coursework: Algorithms, Database Design.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- b - Experience -->
+                <section id="experience" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">📈 Professional Experience</h2>
+                    <div class="space-y-10">
+                        <div class="border-l-4 border-teal-300 pl-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-semibold text-gray-800">Senior Software Engineer</h3>
+                                <span class="text-sm text-gray-500 font-medium">Jan 2021 - Present</span>
+                            </div>
+                            <p class="text-lg text-teal-600 mb-3">**TechCorp Innovations** | San Francisco, CA</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                                <li>**Led the migration** to microservices on **AWS ECS**, resulting in a **20% reduction** in operational costs.</li>
+                                <li>Designed and implemented a real-time data streaming pipeline using **Kafka** and **Node.js**.</li>
+                            </ul>
+                        </div>
+                        <div class="border-l-4 border-teal-300 pl-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-semibold text-gray-800">Software Developer</h3>
+                                <span class="text-sm text-gray-500 font-medium">Jul 2018 - Dec 2020</span>
+                            </div>
+                            <p class="text-lg text-teal-600 mb-3">**Innovate Solutions** | Seattle, WA</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                                <li>Developed responsive user interfaces for a major client portal using **React, Redux, and Tailwind CSS**.</li>
+                                <li>**Optimized PostgreSQL database queries**, cutting the average page load time by **40%**.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- c - Skill -->
+                <section id="skill" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">🛠️ Core Skills & Proficiencies</h2>
+                    <div class="space-y-10">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Technical Proficiencies</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-teal-100 text-teal-800 rounded-lg shadow-sm font-medium">TypeScript / JavaScript</span>
+                                <span class="px-4 py-2 bg-teal-100 text-teal-800 rounded-lg shadow-sm font-medium">React / Redux / Next.js</span>
+                                <span class="px-4 py-2 bg-teal-100 text-teal-800 rounded-lg shadow-sm font-medium">Node.js / Express</span>
+                                <span class="px-4 py-2 bg-teal-100 text-teal-800 rounded-lg shadow-sm font-medium">AWS (Lambda, ECS)</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Professional & Soft Skills</h3>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                                <li>**Agile Scrum:** Expert in leading and contributing within Agile methodologies.</li>
+                                <li>**Technical Leadership:** Proven ability to mentor and guide engineering teams.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- d - Certification and Training -->
+                <section id="certification" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">🏅 Certifications and Training</h2>
+                    <div class="space-y-6">
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <h3 class="text-2xl font-semibold text-gray-800">AWS Certified Solutions Architect – Associate</h3>
+                            <p class="text-lg text-teal-600">**Amazon Web Services** | Issued: October 2023</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <h3 class="text-2xl font-semibold text-gray-800">Certified ScrumMaster (CSM)</h3>
+                            <p class="text-lg text-teal-600">**Scrum Alliance** | Issued: May 2022</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- e - Advocacy -->
+                <section id="advocacy" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">🤝 Advocacy and Community</h2>
+                    <div class="space-y-6 text-gray-700 text-lg">
+                        <p>I believe in fostering growth within the technology community through mentorship and knowledge sharing.</p>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <h3 class="text-2xl font-semibold text-gray-800">Volunteer Tech Mentor, Code for Kids</h3>
+                            <p class="text-teal-600">Provide 1:1 career and technical guidance to high school students. (2022 - Present)</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <h3 class="text-2xl font-semibold text-gray-800">Local Meetup Speaker</h3>
+                            <p class="text-teal-600">Presented talks on "Serverless Architecture with AWS Lambda" at local meetups.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- f - Portfolio -->
+                <section id="portfolio" class="page-view p-8 bg-white rounded-lg shadow-xl border border-gray-200">
+                    <h2 class="text-4xl font-bold mb-8 text-teal-600 section-header">🎨 Project Portfolio</h2>
+                    <div class="grid gap-8 md:grid-cols-2">
+                        <div class="p-6 bg-gray-50 rounded-xl shadow-md border border-gray-200">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Nexus Analytics Platform (SaaS)</h3>
+                            <p class="text-gray-600 mb-4">A full-stack multi-tenant platform built with **Next.js, Node.js, and PostgreSQL**.</p>
+                            <div class="flex space-x-3 mt-4">
+                                <a href="https://demo.nexusplatform.com" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium">Live Demo &rarr;</a>
+                                <a href="https://github.com/alexcarterdev/nexus-platform" target="_blank" class="text-gray-600 hover:text-gray-800">GitHub Repo</a>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-gray-50 rounded-xl shadow-md border border-gray-200">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Serverless API Boilerplate</h3>
+                            <p class="text-gray-600 mb-4">A template repository for rapid API deployment using **AWS Lambda and Terraform**.</p>
+                            <div class="flex space-x-3 mt-4">
+                                <a href="https://docs.serverlessapi.com" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium">Documentation &rarr;</a>
+                                <a href="https://github.com/alexcarterdev/serverless-api-ts" target="_blank" class="text-gray-600 hover:text-gray-800">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Footnote Copyright (OFFSET TO CLEAR THE FIXED SIDEBAR) -->
+        <footer class="border-t border-gray-200 mt-12 py-6 text-center text-gray-500 bg-white shadow-inner">
+            <div class="container mx-auto px-4">
+                <p>&copy; <span id="current-year-footer"></span> Alex Carter. All rights reserved. | Built with Tailwind CSS.</p>
+                <div class="mt-4 space-x-6 text-lg">
+                    <a href="https://linkedin.com/in/alexcarterdev" target="_blank" class="text-gray-600 hover:text-teal-600 transition" aria-label="LinkedIn Profile">LinkedIn</a>
+                    <a href="https://github.com/alexcarterdev" target="_blank" class="text-gray-600 hover:text-teal-600 transition" aria-label="GitHub Profile">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- JAVASCRIPT LOGIC (LOGICALLY SEPARATED) -->
+    <!-- ======================================================= -->
+    <script>
+        // Set current year in the footer
+        document.getElementById('current-year-footer').textContent = new Date().getFullYear();
+
+        /**
+         * Dynamic view switching function (SPA).
+         * Hides all 'page-view' sections and only displays the requested one.
+         * The sidebar is now always visible on large screens (lg)
+         * @param {string} pageId - The ID of the section to show (e.g., 'home', 'education').
+         */
+        function showPage(pageId) {
+            // 1. Hide all pages
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            // 2. Show the requested page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+            }
+
+            // 3. Update active navigation link styling (for both header and sidebar links)
+            document.querySelectorAll('.nav-link, .sidebar-link').forEach(link => {
+                link.classList.remove('active-nav');
+                // Check against both the main header links (nav-link) and sidebar links (sidebar-link)
+                if (link.getAttribute('data-page') === pageId || link.getAttribute('href').substring(1) === pageId) {
+                    link.classList.add('active-nav');
+                }
+            });
+
+            // NOTE: Step 4 (Sidebar visibility logic) has been removed because the sidebar is now 
+            // permanently visible on large screens using the `lg:fixed` classes, fulfilling 
+            // the request for a "literal sidebar" acting as the navigation frame.
+
+            // 4. Update the URL hash to support deep linking and history
+            history.pushState(null, '', `#${pageId}`);
+        }
+
+        // Initialize the app: show the correct page based on URL hash or default to 'home'
+        window.onload = function() {
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showPage(initialPage);
+            
+            // On load, force desktop sidebar to show (since it defaults to hidden lg:block in HTML)
+            const sidebar = document.getElementById('sidebar');
+            // This is handled by CSS, but good to ensure consistency on desktop-sized view
+            if (window.innerWidth >= 1024) { 
+                 sidebar.style.display = 'block';
+            }
+        };
+
+        // Handle browser back/forward buttons
+        window.onpopstate = function() {
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId);
+        };
+    </script>
+</body>
+</html>

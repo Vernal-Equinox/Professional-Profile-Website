@@ -4,36 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Name - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Hello, I'm Your Name</h1>
-    <p>Software Engineer | Web Developer | Tech Enthusiast</p>
-  </header>
-  
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>Write a short intro about yourself here...</p>
-    </section>
+  <script src="../index.js"></script>
+  <div class="container">
+    <div class="sidebar">
+      <h2>profile</h2>
+        <ul>
+          <li><a href="educ.html" class="nav-link">
+            <span class="icon">🎓</span>
+            <span class="text">Education</span>
+          </a></li>
+          <li><a href="exp.html" class="nav-link">
+            <span class="icon">💼</span>
+            <span class="text">Experience</span>
+          </a></li>
+          <li><a href="skill.html" class="nav-link">
+            <span class="icon">⚡</span>
+            <span class="text">Skill</span>
+          </a></li>
+          <li><a href="cert.html" class="nav-link">
+            <span class="icon">📜</span>
+            <span class="text">Certifications</span>
+          </a></li>
+          <li><a href="adv.html" class="nav-link">
+            <span class="icon">💡</span>
+            <span class="text">Advocacy</span>
+          </a></li>
+          <li><a href="port.html" class="nav-link">
+            <span class="icon">📁</span>
+            <span class="text">Portfolio</span>
+          </a></li>
+        </ul>
+    </div>
 
-    <section>
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="educ.html">Education</a></li>
-        <li><a href="exp.html">Experience</a></li>
-        <li><a href="skill.html">Skill</a></li>
-        <li><a href="cert.html">Certification & Training</a></li>
-        <li><a href="adv.html">Advocacy</a></li>
-        <li><a href="port.html">Portfolio</a></li>
-      </ul>
-    </section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>Email: youremail@example.com</p>
-    </section>
-  </main>
+    <div class="main" id="main-content">
+      <header>
+        <div class="header-container">
+          <div class="header-left"></div>
+          <div class="header-center">
+            <h1> <a href="index.html">Sean Ylac</a></h1>
+            <p>Software Engineer | Web Developer | Tech Enthusiast</p>
+          </div>
+          <div class="header-right">
+            <a href="#profile">Profile</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </header>
+      
+      <div id="page-body">
+        <h1>Main Content</h1>
+        <p>This is the main content area.</p>
+      </div>
+
+      <footer>
+        <div class="footer-container">
+          <p>&copy; <span id="current-year"></span> Alex Carter. All rights reserved. | Built with Tailwind CSS.</p>
+          <div class="footer-links">
+            <a href="https://linkedin.com/in/alexcarterdev">LinkedIn</a>
+            <a href="https://github.com/alexcarterdev">GitHub</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
 </body>
 </html>
