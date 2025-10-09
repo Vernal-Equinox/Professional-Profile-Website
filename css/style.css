@@ -8,16 +8,80 @@ body {
     height: 100vh; /* full height of viewport */
   }
 
-  .sidebar h2 {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    overflow-y: auto; /* Allow scrolling if sidebar content is too long */
+    border-right: 1px solid #e0e0e0;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-200px);
+  }
+
+  /* Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #f5f5f5;
+}
+
+.toggle-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .toggle-icon {
+  transform: rotate(180deg);
+}
+
+  .sidebar-header {
+    padding: 40px 20px 30px 20px;
     text-align: center;
+  }
+
+  .sidebar-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+
+  .sidebar-nav {
+    padding: 30px 20px;
+  }
+
+  .nav-title {
+    padding: 20px 20px 30px 20px;
     font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    padding: 0 16px;
+    font-weight: 700;
+    color: #142721;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 15px;
+    margin-bottom: 10px;
+    text-transform: none;
+    text-align: center;
   }
 
   .sidebar ul {
@@ -35,7 +99,7 @@ body {
   .sidebar .nav-link {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
+    padding: 20px 16px;
     text-decoration: none;
     color: #333;
     border-radius: 8px;
@@ -71,7 +135,7 @@ body {
   .header-center {
     text-align: center;
   }
-  
+
   .header-center h1 a {
     text-decoration: none;
     color: inherit;
@@ -121,6 +185,181 @@ body {
 
   .main {
     flex: 1;
-    background-color: #f4f4f4;
-    padding: 20px;
+    margin-left: 250px; /* Space for sidebar */
+    padding-top: 100px; /* Space for header (adjust based on your header height) */
+    transition: margin-left 0.3s ease;
+  }
+
+  .main.expanded {
+    margin-left: 0;
+  }
+
+  /* Make each section take full viewport height */
+  .full-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    scroll-margin-top: 100px; /* Adjust to match header height */
+  }
+
+/* Optional: Different background colors for each section */
+#profile {
+background: #f9fafb;
+}
+
+#about {
+background: #ffffff;
+}
+
+#contact {
+background: #f3f4f6;
+}
+
+/* Smooth scrolling */
+html {
+scroll-behavior: smooth;
+}
+
+/* Header stays visible while scrolling (optional) */
+header {
+    position: fixed;
+    top: 0;
+    left: 250px; /* Start after sidebar */
+    right: 0;
+    background: #fff;
+    z-index: 50;
+    border-bottom: 1px solid #e0e0e0;
+     border-left: 1px solid #e0e0e0;
+    padding: 20px 0;
+    transition: left 0.3s ease;
+}
+
+header.expanded {
+    left: 0; /* Full width when sidebar is hidden */
+  }
+
+/* Two-column grid layout */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  /* Certificate cards */
+  .cert-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: left;
+  }
+  
+  .cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cert-card h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+  }
+  
+  .cert-meta {
+    margin-bottom: 20px;
+  }
+  
+  .cert-meta p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .cert-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .cert-view {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  
+  .cert-view:hover {
+    color: #004499;
+  }
+  
+  /* Responsive: Stack on smaller screens */
+  @media (max-width: 768px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 0; /* No gap between columns */
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Left Column - Image */
+  .left-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    padding: 40px;
+  }
+  
+  .left-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Right Column - Description */
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: #fff;
+  }
+  
+  .right-column h3 {
+    font-size: 24px;
+    color: #16a085;
+    margin-bottom: 15px;
+  }
+  
+  .right-column p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin: 10px 0;
+  }
+  
+  /* Responsive: Stack on smaller screens */
+  @media (max-width: 768px) {
+    .two-column-layout {
+      grid-template-columns: 1fr;
+    }
   }

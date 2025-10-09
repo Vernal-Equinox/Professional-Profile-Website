@@ -9,8 +9,18 @@
 <body>
   <script src="../index.js"></script>
   <div class="container">
-    <div class="sidebar">
-      <h2>profile</h2>
+    <div class="sidebar" id="sidebar">
+      
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <span class="toggle-icon">☰</span>
+      </button>
+
+      <div class="sidebar-header">
+        <h2>Profile</h2>
+      </div>
+
+      <div class="sidebar-nav">
+        <h3 class="nav-title">Site Navigation</h3>
         <ul>
           <li><a href="educ.html" class="nav-link">
             <span class="icon">🎓</span>
@@ -22,7 +32,7 @@
           </a></li>
           <li><a href="skill.html" class="nav-link">
             <span class="icon">⚡</span>
-            <span class="text">Skill</span>
+            <span class="text">Skills</span>
           </a></li>
           <li><a href="cert.html" class="nav-link">
             <span class="icon">📜</span>
@@ -37,6 +47,7 @@
             <span class="text">Portfolio</span>
           </a></li>
         </ul>
+      </div>
     </div>
 
 
@@ -45,8 +56,7 @@
         <div class="header-container">
           <div class="header-left"></div>
           <div class="header-center">
-            <h1> <a href="index.html">Sean Ylac</a></h1>
-            <p>Software Engineer | Web Developer | Tech Enthusiast</p>
+            <h1><a href="#top" class="site-title">SYlac</a></h1>
           </div>
           <div class="header-right">
             <a href="#profile">Profile</a>
@@ -57,8 +67,46 @@
       </header>
       
       <div id="page-body">
-        <h1>Main Content</h1>
-        <p>This is the main content area.</p>
+        <section id="dashboard" class="full-section">
+          <section id="hero" class="hero-section">
+            <div class="hero-content">
+              <h1>Hi, I'm [Your Name]</h1>
+              <p class="hero-subtitle">Computer Science Student | Software Engineer</p>
+              <p class="hero-description">Passionate about building innovative solutions and creating impactful software.</p>
+              <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Get In Touch</a>
+                <a href="#portfolio" class="btn-secondary">View My Work</a>
+              </div>
+            </div>
+          </section>
+          <h2>Dashboard</h2>
+          <p>This is the main section content...</p>
+        </section>
+
+        <section id="profile" class="full-section">
+          <h2>Profile</h2>
+          <section class="introduction"> 
+            <h2>Hello, I'm [Your Name]</h2> 
+            <p>
+              As a [Your Profession] with [X] years of experience, 
+              my passion is translating complex ideas into elegant, 
+              functional digital products. I specialize in [Key Skill 1] 
+              and [Key Skill 2], helping clients like [Client 1] and [Client 2] 
+              achieve measurable results.
+            </p> 
+              <a href="#contact">Let's Connect</a> 
+          </section>
+        </section>
+    
+        <section id="about" class="full-section">
+          <h2>About</h2>
+          <p>This is the about section content...</p>
+        </section>
+    
+        <section id="contact" class="full-section">
+          <h2>Contact</h2>
+          <p>This is the contact section content...</p>
+        </section>
       </div>
 
       <footer>
