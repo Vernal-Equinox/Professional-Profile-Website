@@ -231,8 +231,8 @@ header {
     right: 0;
     background: #fff;
     z-index: 50;
-    border-bottom: 1px solid #e0e0e0;
-     border-left: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
+    border-left: 1px solid #e0e0e0;
     padding: 20px 0;
     transition: left 0.3s ease;
 }
