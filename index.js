@@ -43,29 +43,24 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     }
 
-    // Handle sidebar navigation links (existing functionality)
+    // Handle sidebar navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
 
-      // Remove active class from all links
       removeAllActiveClasses();
       
-      // Remove active class from all links
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
       
-      // Add active class to clicked link
       this.classList.add('active');
       
       const href = this.getAttribute('href');
       const currentBody = document.querySelector('#page-body');
       
-      // Add transition-out class
       if (currentBody) {
         currentBody.classList.add('page-transition-out');
       }
       
-      // Wait for transition, then load new content
       setTimeout(() => {
         fetch(href)
           .then(res => {
@@ -80,11 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (incomingBody && currentBody) {
               currentBody.innerHTML = incomingBody.innerHTML;
               
-              // Remove transition-out and add transition-in
               currentBody.classList.remove('page-transition-out');
               currentBody.classList.add('page-transition-in');
               
-              // Remove transition-in class after animation
               setTimeout(() => {
                 currentBody.classList.remove('page-transition-in');
               }, 500);
@@ -97,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Failed to load page. Please try again.');
             currentBody.classList.remove('page-transition-out');
           });
-      }, 300); // Match this to transition-out duration
+      }, 300);
     });
   });
   
@@ -105,27 +98,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.header-link').forEach(link => {
         link.addEventListener('click', function (e) {
           e.preventDefault();
-          // Remove active class from sidebar nav links
           removeAllActiveClasses();
           
           const targetId = this.getAttribute('href');
           
-          // Check if we're on the home page and the section exists
           const targetSection = document.querySelector(targetId);
           if (targetSection) {
-            // We're on home page, just scroll to the section
             targetSection.scrollIntoView({ 
               behavior: 'smooth', 
               block: 'start' 
             });
           } else {
-            // We're on a different page, load home content first
             const pageBody = document.querySelector('#page-body');
             if (pageBody) {
-              // Restore the initial home content
               pageBody.innerHTML = initialHomeHTML;
               
-              // Wait for content to load, then scroll to section
               setTimeout(() => {
                 const newTargetSection = document.querySelector(targetId);
                 if (newTargetSection) {
@@ -140,15 +127,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
 
-      // Handle any other links (like hero buttons)
   document.addEventListener('click', function(e) {
-    // Check if it's a link with # (anchor) that's not a nav-link
     if (e.target.tagName === 'A' && 
         e.target.getAttribute('href')?.startsWith('#') && 
         !e.target.classList.contains('nav-link') &&
         !e.target.classList.contains('header-link')) {
       
-      // Remove active class from sidebar nav links
       removeAllActiveClasses();
       
       const targetId = e.target.getAttribute('href');

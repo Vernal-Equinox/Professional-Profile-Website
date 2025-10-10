@@ -7,7 +7,7 @@ body {
 
   .container {
     display: flex;
-    height: 100vh; /* full height of viewport */
+    height: 100vh;
   }
 
   .sidebar {
@@ -18,21 +18,21 @@ body {
     height: 100vh;
     background: #fff;
     overflow-y: auto;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
     border-right: 1px solid #e0e0e0;
     z-index: 100;
-    transition: width 0.3s ease; /* Change from transform to width */
+    transition: width 0.3s ease;
   }
   
   .sidebar.collapsed {
-    width: 70px; /* Show only icons */
+    width: 70px;
   }
   
   /* Toggle Button */
   .sidebar-toggle {
     position: absolute;
     top: 35px;
-    right: 9px; /* Position outside sidebar */
+    right: 9px;
     width: 40px;
     height: 40px;
     background: #fff;
@@ -58,7 +58,6 @@ body {
     transform: rotate(180deg);
   }
   
-  /* Sidebar Header - hide text when collapsed */
   .sidebar-header h2,
   .sidebar-header .profile-subtitle {
     opacity: 1;
@@ -112,7 +111,6 @@ body {
     animation: slideInLeft 0.5s ease forwards;
   }
   
-  /* When collapsed, reduce margins */
   .sidebar.collapsed li {
     margin-left: 10px;
     margin-right: 10px;
@@ -145,13 +143,11 @@ body {
     white-space: nowrap;
   }
   
-  /* Center links when collapsed */
   .sidebar.collapsed .nav-link {
     justify-content: center;
     padding: 20px 10px;
   }
   
-/* Left border on hover/active - only show when NOT collapsed */
 .sidebar:not(.collapsed) .nav-link::after {
     content: '';
     position: absolute;
@@ -165,12 +161,10 @@ body {
     transition: height 0.3s ease;
   }
 
-  /* Remove ::after completely when collapsed */
 .sidebar.collapsed .nav-link::after {
     display: none;
   }
 
-  /* Left border on hover/active */
   .sidebar .nav-link::after {
     content: '';
     position: absolute;
@@ -196,20 +190,17 @@ body {
     padding-left: 20px;
   }
   
-  /* Don't shift padding when collapsed */
   .sidebar.collapsed .nav-link:hover {
     padding-left: 10px;
     padding-right: 10px;
     background: #f0f9f7;
   }
 
-  /* Hide left border when collapsed, use bottom border instead */
 .sidebar.collapsed .nav-link::after {
     opacity: 0;
     height: 0;
   }
 
-  /* Bottom border indicator when collapsed */
 .sidebar.collapsed .nav-link::before {
     content: '';
     position: absolute;
@@ -223,18 +214,15 @@ body {
     transition: width 0.3s ease;
   }
 
-  /* Hide ::before when NOT collapsed */
 .sidebar:not(.collapsed) .nav-link::before {
     display: none;
   }
 
-  /* Show bottom border on hover/active when collapsed */
 .sidebar.collapsed .nav-link:hover::before,
 .sidebar.collapsed .nav-link.active::before {
   width: 70%;
 }
 
-/* Normal state - show left border */
 .sidebar .nav-link:hover::after,
 .sidebar .nav-link.active::after {
   height: 70%;
@@ -250,15 +238,13 @@ body {
     z-index: 1; /* Keep icon above borders */
   }
   
-    /* ensure images inherit the same box and align nicely */
 .sidebar .nav-link .icon img {
-    width: 18px;              /* slightly smaller than the 20px box */
+    width: 18px;
     height: 18px;
     object-fit: contain;
-    display: block;           /* remove inline gaps */
+    display: block;
   }
   
-  /* Bigger icon and no margin when collapsed */
   .sidebar.collapsed .nav-link .icon {
     font-size: 18px;
     margin-right: 0;
@@ -268,19 +254,16 @@ body {
     transform: scale(1.2);
   }
 
-  /* Keep icon centered when collapsed and active */
 .sidebar.collapsed .nav-link.active .icon {
     transform: scale(1.1);
   }
   
-  /* Active state */
   .sidebar .nav-link.active {
     background: #e6f7f4;
     color: #16a085;
     font-weight: 600;
   }
 
-  /* Active state when collapsed - make it more prominent */
 .sidebar.collapsed .nav-link.active {
     background: #d1f2ea;
     transform: scale(1.05);
@@ -293,15 +276,13 @@ body {
     transition: opacity 0.2s ease, width 0.3s ease;
     overflow: hidden;
   }
-  
-  /* Hide text when collapsed */
+
   .sidebar.collapsed .nav-link .text {
     opacity: 0;
     width: 0;
     margin-left: 0;
   }
-  
-  /* Optional: Add tooltips when collapsed */
+
   .sidebar.collapsed .nav-link {
     position: relative;
   }
@@ -326,12 +307,10 @@ body {
   height: auto;
 }
 
-/* Add small arrow to tooltip */
 .sidebar.collapsed .nav-link:hover::after {
   box-shadow: -4px 0 0 -2px #333;
 }
   
-  /* Divider - hide when collapsed */
   .divider {
     transition: opacity 0.2s ease;
   }
@@ -356,7 +335,7 @@ body {
   .header-center h1 a {
     font-family: 'Monteserrat', sans-serif;
     text-decoration: none;
-    color: #1f2937;
+    color: #16a085;
   }
   
   .header-right {
@@ -405,8 +384,8 @@ body {
 
   .main {
     flex: 1;
-    margin-left: 250px; /* Space for sidebar */
-    padding-top: 100px; /* Space for header (adjust based on your header height) */
+    margin-left: 250px;
+    padding-top: 100px;
     transition: margin-left 0.3s ease;
   }
 
@@ -414,7 +393,6 @@ body {
     margin-left: 70px;
   }
 
-  /* Make each section take full viewport height */
   .full-section {
     background-color: #f3f4f6;
     min-height: 80vh;
@@ -423,16 +401,15 @@ body {
     justify-content: center;
     align-items: center;
     padding: 60px 40px;
-    scroll-margin-top: 100px; /* Adjust to match header height */
+    scroll-margin-top: 100px;
   }
 
-/* Optional: Different background colors for each section */
 #profile {
 background: #f9fafb;
 }
 
 #about {
-background: #ffffff;
+background: #f3f4f6;
 }
 
 #contact {
@@ -444,32 +421,30 @@ html {
 scroll-behavior: smooth;
 }
 
-/* Header stays visible while scrolling (optional) */
 header {
     position: fixed;
     top: 0;
-    left: 250px; /* Start after sidebar */
+    left: 250px;
     right: 0;
     background: #fff;
     z-index: 50;
-    /* border-bottom: 1px solid #e0e0e0; */
     border-left: 1px solid #e0e0e0;
     padding: 20px 0;
     transition: left 0.3s ease;
 }
 
    header.expanded {
-    left: 70px; /* Full width when sidebar is hidden */
+    left: 70px;
   }
 
   #cert {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
   }
 
-/* Two-column grid layout */
+    /* Certificate */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -479,7 +454,6 @@ header {
     width: 100%;
   }
   
-  /* Certificate cards */
   .cert-card {
     background: #fff;
     border: 1px solid #e0e0e0;
@@ -491,7 +465,7 @@ header {
   
   .cert-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: -5px 5px 0 #16a085;
   }
   
   .cert-card h3 {
@@ -513,6 +487,7 @@ header {
   }
   
   .cert-summary {
+    text-align: justify;
     font-size: 15px;
     line-height: 1.6;
     color: #555;
@@ -532,7 +507,6 @@ header {
     color: #0d6856;
   }
   
-  /* Responsive: Stack on smaller screens */
   @media (max-width: 768px) {
     .cert-grid {
       grid-template-columns: 1fr;
@@ -541,8 +515,8 @@ header {
 
   .two-column-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 0; /* No gap between columns */
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
     height: 100%;
     width: 100%;
   }
@@ -552,10 +526,9 @@ header {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
   }
   
-  /* Section Header */
   .section-header {
     padding: 40px 20px;
     text-align: center;
@@ -569,7 +542,6 @@ header {
     font-weight: 700;
   }
   
-  /* Section Body */
   .section-body {
     flex: 1;
     display: flex;
@@ -577,6 +549,7 @@ header {
     justify-content: center;
     padding: 40px 20px;
     background: #f3f4f6;
+    border-bottom: 2px solid #e0e0e0;
   }
   
   .two-column-layout {
@@ -617,7 +590,7 @@ header {
   
   .right-column h3 {
     font-size: 28px;
-    color: #16a085;
+    color: #333;
     margin-bottom: 20px;
     font-weight: 600;
   }
@@ -632,10 +605,9 @@ header {
   .right-column p:last-child {
     margin-top: 20px;
     font-weight: 500;
-    color: #16a085;
+    color: #555;
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
     .section-header h2 {
       font-size: 32px;
@@ -658,12 +630,10 @@ header {
     }
   }
 
-  /* Initial state - no animation */
 #page-body {
   opacity: 1;
 }
 
-/* Transition classes */
 #page-body.page-transition-out {
   opacity: 0;
   transform: translateY(20px);
@@ -685,11 +655,12 @@ header {
   }
 }
 
+    /* Experience */
   #exp {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
   }
 
   .exp-container {
@@ -701,20 +672,19 @@ header {
     align-items: flex-start;
   }
 
-  /* Left Column - Label */
   .exp-label-column {
     flex: 0 0 300px;
     position: sticky;
-    top: 150px; /* Adjust based on your header height */
+    top: 150px;
   }
 
   .exp-label {
-    background: #f5f5f5;
-    border: 2px solid #2c3e50;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 60px 40px;
     text-align: center;
-    min-height: 200px;
+    min-height: 447px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -730,7 +700,6 @@ header {
     writing-mode: horizontal-tb;
   }
 
-  /* Right Column - Cards */
   .exp-cards-column {
     flex: 1;
     display: flex;
@@ -740,7 +709,7 @@ header {
 
   .exp-card {
     background: #fff;
-    border: 2px solid #2c3e50;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 30px 35px;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -748,7 +717,7 @@ header {
 
   .exp-card:hover {
     transform: translateX(5px);
-    box-shadow: -5px 5px 0 #2c3e50;
+    box-shadow: -5px 5px 0 #16a085;
   }
 
   .exp-card-header {
@@ -775,34 +744,6 @@ header {
     font-style: italic;
   }
 
-  .exp-description {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #555;
-    margin: 15px 0;
-  }
-
-  .exp-description p {
-    margin: 10px 0;
-  }
-
-  .exp-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .skill-tag {
-    background: #e6f7f4;
-    color: #16a085;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  /* Responsive Design */
   @media (max-width: 968px) {
     .exp-container {
       flex-direction: column;
@@ -839,19 +780,313 @@ header {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
   }
 
+  .skills-container {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    padding: 40px 20px;
+    align-items: flex-start;
+  }
+
+  .skills-label-column {
+    flex: 0 0 300px;
+    position: sticky;
+    top: 150px;
+  }
+
+  .skills-label {
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 80px 40px;
+    text-align: center;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(22, 160, 133, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skills-label::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-10%, -10%) scale(1.1);
+    }
+  }
+
+  .skills-label h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .skills-content-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .skill-category {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 35px 40px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-category:hover {
+    transform: translateX(5px);
+    box-shadow: -5px 5px 0 #16a085;
+  }
+
+  .skill-category-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #16a085;
+  }
+
+  .skill-category h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin: 0;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-item {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+  }
+
+  .skill-item:hover {
+    background: #e6f7f4;
+    border-color: #16a085;
+    transform: translateY(-3px);
+  }
+
+  .skill-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  .skill-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .skill-level-text {
+    font-size: 13px;
+    color: #666;
+    min-width: 80px;
+  }
+
+  .skill-bar {
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #16a085 0%, #0d6856 100%);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .skill-tag {
+    background: #fff;
+    color: #2c3e50;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid #16a085;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .skill-tag:hover {
+    background: #16a085;
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 968px) {
+    .skills-container {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .skills-label-column {
+      flex: 0 0 auto;
+      position: static;
+      width: 100%;
+    }
+
+    .skills-label {
+      padding: 40px 30px;
+      min-height: auto;
+    }
+
+    .skills-label h2 {
+      font-size: 24px;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .skill-category {
+      padding: 25px 20px;
+    }
+
+    .skill-category h3 {
+      font-size: 20px;
+    }
+  }
+
+  /* Advocacy */
   #adv {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
   }
 
   #port {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    padding-top: 30px; /* Space below header */
+    padding-top: 30px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .hero-section {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+  
+  .hero-right-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    padding: 0;
+    min-height: 400px;
+  }
+  
+  .hero-right-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .hero-left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 50px;
+    background: #fff;
+  }
+  
+  .hero-left-column h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .hero-left-column p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.8;
+    margin: 8px 0;
+  }
+  
+  .hero-left-column p:last-child {
+    margin-top: 20px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  @media (max-width: 768px) {
+    
+    .hero-section {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-right-column {
+      min-height: 300px;
+    }
+    
+    .hero-left-column {
+      padding: 40px 30px;
+    }
   }
