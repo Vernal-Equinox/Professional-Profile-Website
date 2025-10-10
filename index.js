@@ -18,23 +18,23 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Sidebar toggle functionality
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.querySelector('.main');
-    const header = document.querySelector('header');
+    // // Sidebar toggle functionality
+    // const sidebarToggle = document.getElementById('sidebarToggle');
+    // const sidebar = document.getElementById('sidebar');
+    // const mainContent = document.querySelector('.main');
+    // const header = document.querySelector('header');
 
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('collapsed');
-        if (mainContent) {
-            mainContent.classList.toggle('expanded');
-        }
-        if (header) {
-            header.classList.toggle('expanded');
-          }
-        });
-    }
+    // if (sidebarToggle && sidebar) {
+    //     sidebarToggle.addEventListener('click', function() {
+    //     sidebar.classList.toggle('collapsed');
+    //     if (mainContent) {
+    //         mainContent.classList.toggle('expanded');
+    //     }
+    //     if (header) {
+    //         header.classList.toggle('expanded');
+    //       }
+    //     });
+    // }
   
     // Handle sidebar navigation links (existing functionality)
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -69,17 +69,37 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Handle header anchor links for smooth scrolling
     document.querySelectorAll('.header-link').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-          targetSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          
+          // Check if we're on the home page and the section exists
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            // We're on home page, just scroll to the section
+            targetSection.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          } else {
+            // We're on a different page, load home content first
+            const pageBody = document.querySelector('#page-body');
+            if (pageBody) {
+              // Restore the initial home content
+              pageBody.innerHTML = initialHomeHTML;
+              
+              // Wait for content to load, then scroll to section
+              setTimeout(() => {
+                const newTargetSection = document.querySelector(targetId);
+                if (newTargetSection) {
+                  newTargetSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                  });
+                }
+              }, 100);
+            }
+          }
+        });
       });
-    });
   });

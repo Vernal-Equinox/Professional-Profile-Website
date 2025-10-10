@@ -21,11 +21,11 @@ body {
     transition: transform 0.3s ease;
   }
 
-  .sidebar.collapsed {
+  /* .sidebar.collapsed {
     transform: translateX(-200px);
-  }
+  } */
 
-  /* Toggle Button */
+  /* Toggle Button
 .sidebar-toggle {
   position: absolute;
   top: 20px;
@@ -41,20 +41,20 @@ body {
   justify-content: center;
   z-index: 101;
   transition: all 0.3s ease;
-}
+} */
 
-.sidebar-toggle:hover {
+/* .sidebar-toggle:hover {
   background: #f5f5f5;
-}
+} */
 
-.toggle-icon {
+/* .toggle-icon {
   font-size: 20px;
   transition: transform 0.3s ease;
-}
+} */
 
-.sidebar.collapsed .toggle-icon {
+/* .sidebar.collapsed .toggle-icon {
   transform: rotate(180deg);
-}
+} */
 
   .sidebar-header {
     padding: 40px 20px 30px 20px;
@@ -187,12 +187,12 @@ body {
     flex: 1;
     margin-left: 250px; /* Space for sidebar */
     padding-top: 100px; /* Space for header (adjust based on your header height) */
-    transition: margin-left 0.3s ease;
+    /* transition: margin-left 0.3s ease; */
   }
 
-  .main.expanded {
+  /* .main.expanded {
     margin-left: 0;
-  }
+  } */
 
   /* Make each section take full viewport height */
   .full-section {
@@ -237,9 +237,9 @@ header {
     transition: left 0.3s ease;
 }
 
-header.expanded {
-    left: 0; /* Full width when sidebar is hidden */
-  }
+/* header.expanded {
+    left: 0; /* Full width when sidebar is hidden
+  } */ 
 
 /* Two-column grid layout */
 .cert-grid {
