@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to attach event listeners to portfolio tiles
   function attachPortfolioTileListeners() {
-    document.querySelectorAll('.port-tile').forEach(tile => {
+    document.querySelectorAll('.port-tile, .back-button').forEach(tile => {
       tile.addEventListener('click', function (e) {
         e.preventDefault();
         
